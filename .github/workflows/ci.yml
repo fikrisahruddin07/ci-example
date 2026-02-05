@@ -1,26 +1,27 @@
-nama: CI Pipeline
+name: CI Pipeline
+
 on:
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
 
 jobs:
- build:
-   runs-on:  ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-   steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - nama: Set up Python
-      uses: action/setup-python@v4
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
 
-   - nama: Install dependencies
-     run:
-      python -m pip install --upgrade pip
-      pip install -r requirement.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-   -nama: Run application
-    run: python app.py
+      - name: Run application
+        run: python app.py
